@@ -1,0 +1,11 @@
+[Unit]
+Description=Set up /dev/ati/ for headless usage
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/catalyst-headless-setup.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

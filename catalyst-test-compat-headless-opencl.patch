@@ -1,0 +1,14 @@
+--- firegl_public.c	2013-03-30 04:24:59.421741994 +0000
++++ firegl_public_patched.c	2013-03-30 04:19:12.000000000 +0000
+@@ -1941,6 +1941,10 @@
+  */
+ int ATI_API_CALL KCL_PosixSecurityCapCheck(KCL_ENUM_PosixSecurityCap cap)
+ {
++    if (cap == KCL_SECURITY_CAP_GENERAL_SYS_ADMIN) {
++      return 1;
++    }
++
+     if (cap >= KCL_SECURITY_CAP_NUM)
+     {
+         return 0;
+

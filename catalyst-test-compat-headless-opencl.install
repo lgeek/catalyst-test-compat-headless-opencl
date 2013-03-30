@@ -1,0 +1,25 @@
+post_install() {
+  cd /usr/share/ati/build_mod/
+  patch -p0 < catalyst-test-compat-headless-opencl.patch
+  catalyst_build_module
+  systemctl enable catalyst-headless-setup
+}
+
+pre_upgrade() {
+  cd /usr/share/ati/build_mod/
+  patch -p0 -R < catalyst-test-compat-headless-opencl.patch
+}
+
+post_upgrade() {
+  cd /usr/share/ati/build_mod/
+  patch -p0 < catalyst-test-compat-headless-opencl.patch
+  catalyst_build_module
+}
+
+pre_remove() {
+  cd /usr/share/ati/build_mod/
+  patch -p0 -R < catalyst-test-compat-headless-opencl.patch
+  catalyst_build_module
+  systemctl disable catalyst-headless-setup
+}
+
